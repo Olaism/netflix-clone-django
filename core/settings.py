@@ -23,6 +23,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'netflix',
     'users',
+    'subscriptions',
 ]
 
 MIDDLEWARE = [
