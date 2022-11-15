@@ -22,17 +22,7 @@
                 </h1>
                 {% csrf_token %}
                 {% include 'partials/form.html' %}
-                <div class="flex justify-center items-center">
-                    <button class="py-2 px-4 bg-primary-red text-gray-100 font-medium text-lg rounded-md">
-                        Sign Up
-                    </button>
-                </div>
-
-                <div class="text-center mt-4">
-                    <p>
-                        Have account already ? <a href="{% url 'login' %}" class="text-blue-600"> Log In</a>
-                    </p>
-                </div>
+                <button type="submit">Update</button>
             </form>
         </div>
     </header>
