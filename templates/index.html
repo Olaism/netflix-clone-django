@@ -4,15 +4,36 @@
     Home
 {% endblock title %}
 
-
 {% block extras %}
-    <script src="https://unpkg.com/ionicons@5.4.0/dist/ionicons.js"></script>
-{% endblock extras %}
-    
+<link rel="icon" href="{% static 'img/icone.png' %}" />
+
+<!-- Bootstrap CSS -->
+<link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}" />
+
+<!-- Font Awesome -->
+<link
+  rel="stylesheet"
+  href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
+  integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU"
+  crossorigin="anonymous"
+/>
+
+<link rel="stylesheet" href="{% static 'owl/owl.carousel.min.css' %}" />
+<link rel="stylesheet" href="{% static 'owl/owl.theme.default.min.css' %}" />
+<!-- HTML5Shiv -->
+<!--[if lt IE 9]>
+  <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+<![endif]-->
+<!-- Estilo customizado -->
+<link rel="stylesheet" type="text/css" href="{% static 'css/estilo.css' %}" />
+{% endblock extras %} 
 
 {% block content %}
 
     {% include "partials/navbar.html" %}
+    {% if user.is_authenticated %}
+        {% include 'partials/login_home.html' %}
+    {% else %}
     <header class="min-h-screen bg-black bg-opacity-75 showcase border-gray-600 border-b-8 flex justify-center items-center bg-no-repeat"  style="background-image: url('{% static "img/background_netflix.jpg" %}');">
         <div class="z-10 h-full py-32 md:py-0 text-gray-100 text-center flex items-center flex-col">
             <h1 class="font-semibold text-4xl md:text-5xl w-10/12 md:w-3/4 text-center">
@@ -85,13 +106,30 @@
             <img src="{% static 'img/netflix_kid.png' %}" class="w-8/12" alt="">
         </div>
     </section>
-    <footer class=" px-5 py-10 ">
-        <ul class="flex justify-between items-center">
-            <li>&copy; 2022</li>
-            <li> Made with Django and Tailwind</li>
-            <li>By Olaism</li>
-        </ul>
-    </footer>
 
+    {% endif %}
 
+    {% include 'partials/footer.html' %}
 {% endblock content %}
+
+
+{% block js %}
+<script src="{% static 'js/java.js' %}"></script>
+
+<!-- JavaScript (Opcional) -->
+<!-- jQuery primeiro, depois Popper.js, depois Bootstrap JS -->
+<script
+  src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+  integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+  crossorigin="anonymous"
+></script>
+<script
+  src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+  integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+  crossorigin="anonymous"
+></script>
+<script src="{% static 'js/bootstrap.min.js' %}"></script>
+<script src="{% static 'js/owl/jquery.min.js' %}"></script>
+<script src="{% static 'js/owl/owl.carousel.min.js' %}"></script>
+<script src="{% static 'js/owl/setup.js' %}"></script>
+{% endblock js %}

@@ -1,0 +1,121 @@
+{% load static %}
+<!-- Home Loggedin Template -->
+<div class="container-fluid">
+  <!-- Featured -->
+  <div class="row">
+    <div class="col-12 full-banner text-white">
+      <div class="p-4 d-flex justify-content-start align-items-center h-100">
+        <div>
+          <h1
+            class="h3 d-none d-md-none md-nowrap d-sm-flex d-xl-flex d-lg-flex"
+          >
+            <img class="logo d-none d-md-block" src="{% static 'img/sw.png' %}" />
+          </h1>
+
+          <h1 class="d-md-flex d-none d-sm-none d-xl-none d-lg-none">
+            {{ last_featured.title }}
+          </h1>
+          <small class="d-flex my-2 justfify-content-start">
+            <span class="mr-3">{{ last_featured.release_date|date:"Y" }}</span>
+            <span class="mr-3">|</span>
+            <span class="mr-3 L">L</span>
+            <span class="mr-3">|</span>
+            <span class="mr-3">{{ last_featured.duration }} min</span>
+          </small>
+          <p class="d-none d-lg-block text-white">
+            {{ last_featured.description }}
+          </p>
+          <a
+            href="#"
+            class="play mr-3 pb-4 btn btn-primary text-uppercase font-weight-bold"
+            ><i class="mr-2 fas fa-play"></i>Watch Now</a
+          >
+          <a
+            href="#"
+            class="info btn btn-primary text-uppercase font-weight-bold"
+            ><i class="mr-2 fas fa-info-circle"></i>Get Information</a
+          >
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- movies container fluid-->
+
+<div class="p-3 list-titles">
+  <!-- Most popular header -->
+  <h2 class="h4">Most Popular</h2>
+</div>
+<!-- Most popular movies container-->
+
+<div class="carrosel-filmes d-flex flex-nowrap overflow-hidden">
+  <!-- Movie Carousel-->
+  <div class="owl-carousel owl-theme">
+    <!-- Loop through each movie -->
+    {% for movie in most_popular %}
+    <div class="container">
+      <!-- Movie flyer -->
+      <div class="box">
+        <!-- Details Box -->
+
+        <div class="imgbox">
+          <!-- Movie flyer image-->
+          <a href="{{ movie.flyer.url }}"><img src="{{ movie.flyer.url }}" alt="" /></a>
+        </div>
+
+        <div class="content">
+          <!-- Movie content-->
+          <div>
+            <h2>{{ movie.title }}</h2>
+            <p class="about">
+              {{ movie.description }}
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- End loop -->
+    {% endfor %}
+  </div>
+</div>
+<!--Popular Movies container ends -->
+
+<div class="p-3 list-titles">
+  <!-- Latest Movies Header-->
+  <h2 class="h4">Latest</h2>
+</div>
+<!-- Movies Carousel -->
+<div class="carrosel-filmes d-flex flex-nowrap overflow-hidden">
+  <!-- initial carousel -->
+  <div class="owl-carousel owl-theme">
+    <!--Start Movies loop -->
+    {% for movie in latest_movies %}
+    <div class="container">
+      <!-- Initial image container -->
+      <div class="box">
+        <!-- initial box -->
+
+        <div class="imgbox">
+          <!-- initial image box -->
+          <a href="{{ movie.flyer.url }}"><img src="{{ movie.flyer.url }}" alt="{{ movie.title }}" /></a>
+        </div>
+        <!-- End Image Box-->
+
+        <div class="content">
+          <!-- start content -->
+          <div>
+            <h2>{{ movie.title }}</h2>
+            <p>
+              {{ movie.description }}
+            </p>
+          </div>
+        </div>
+        <!-- end content-->
+      </div>
+      <!-- end box-->
+    </div>
+    <!-- end movie loop -->
+    {% endfor %}
+  </div>
+  <!-- endm carousel -->
+</div>
